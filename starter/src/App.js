@@ -1,5 +1,5 @@
 import "./App.css";
-import BookShelf from "./components/BookShelf";
+import Home from "./components/Home";
 import Search from "./components/Search";
 import { useState } from "react";
 import { getAll,} from "./BooksAPI";
@@ -35,7 +35,7 @@ function App() {
   return (
     <div className="app">
       <Routes>
-        <Route path="/" element={<BookShelf books={books} listen={bookStateChangeHandler}/>} />
+        <Route path="/" element={<Home books={books} listen={bookStateChangeHandler}/>} />
         <Route path="/search" element={<Search books={books} listen={bookStateChangeHandler}/>} />
       </Routes>
     </div>

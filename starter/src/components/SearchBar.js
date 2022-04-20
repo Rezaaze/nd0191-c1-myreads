@@ -16,9 +16,10 @@ const SearchBar = ({ onGetBooks }) => {
         }
 
         const response = await search(word);
-        if (response) {
+        if(response) {
           onGetBooks(response);
         } else {
+          onGetBooks([])
           throw Error;
         }
       } catch (e) {
@@ -27,6 +28,7 @@ const SearchBar = ({ onGetBooks }) => {
     };
 
     doIt();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [word]);
 
   return (

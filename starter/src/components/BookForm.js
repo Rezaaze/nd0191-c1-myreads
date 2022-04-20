@@ -2,13 +2,22 @@ import React from "react";
 import { useEffect } from "react";
 import { update } from "../BooksAPI";
 
-const BookForm = ({ listen, book, isInShelf }) => {
+const BookForm = ({listBooks, listen, book,}) => {
+  const isInShelf = listBooks? listBooks.find(u=>u.id===book.id):false;
   const [bookState, setBookState] = React.useState(() => {
-    if (book.shelf === undefined) {
-      return "none";
+    if (isInShelf) {
+      const a = listBooks.filter(item=>item.id===book.id)
+      console.log(a)
+      return a[0].shelf;
     }
-    return book.shelf;
+    if(book.shelf){
+      return book.shelf
+    }
+    return "none";
+    
+    
   });
+  console.log(bookState)
   const [bookStateChange, setBookStateChange] = React.useState(false);
 
   const bookStateHandler = (event) => {
@@ -29,6 +38,7 @@ const BookForm = ({ listen, book, isInShelf }) => {
       change();
       setBookStateChange(false);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [bookStateChange]);
 
   return (
@@ -39,13 +49,13 @@ const BookForm = ({ listen, book, isInShelf }) => {
       }
     >
       <select onChange={bookStateHandler} value={bookState}>
-        <option value="none" disabled>
+        <option value="moveTo" disabled>
           Move to...
         </option>
-        <option value="currentlyReading">Currently Reading</option>
-        <option value="wantToRead">Want to Read</option>
-        <option value="read">Read</option>
-        <option value="none">None</option>
+        <option value="currentlyReading" >Currently Reading</option>
+        <option value="wantToRead"  >Want to Read</option>
+        <option value="read" >Read</option>
+        <option value="none" >None</option>
       </select>
     </div>
   );

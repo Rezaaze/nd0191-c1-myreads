@@ -1,7 +1,7 @@
 import BookForm from "./BookForm";
 
 const Book = ({listen, ins ,listBooks}) => {
-  let isInShelf = listBooks ? listBooks.find(u=>u.id===ins.id):false;
+  
   
   return (
     <li>
@@ -17,7 +17,7 @@ const Book = ({listen, ins ,listBooks}) => {
             }:{width: 128,
               height: 193,}}
           ></div>
-          <BookForm book={ins} listBooks={listBooks} listen={listen} isInShelf={isInShelf}></BookForm>
+          <BookForm book={ins} listBooks={listBooks} listen={listen} ></BookForm>
         </div>
         <div className="book-title">{ins.title}</div>
         <div className="book-authors">{ins.authors}</div>
