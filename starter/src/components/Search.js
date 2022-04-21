@@ -2,6 +2,7 @@ import { useState } from "react";
 import Book from "./Book";
 import SearchBar from "./SearchBar";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
 const Search = (props) => {
   const [sta, setSta] = useState([]);
@@ -9,6 +10,9 @@ const Search = (props) => {
   const getbooks = (books) => {
     setSta(books);
   };
+  useEffect(()=>{
+    
+  })
   
   return (
     <div className="search-books">

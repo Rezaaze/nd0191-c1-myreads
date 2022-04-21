@@ -4,16 +4,17 @@ import { search } from "../BooksAPI";
 
 const SearchBar = ({ onGetBooks }) => {
   const [word, setWord] = useState("");
+  
 
   const handleSearch = (event) => {
     setWord(event.target.value);
   };
   useEffect(() => {
     const doIt = async () => {
+      
       try {
-        if (word === "") {
-          onGetBooks([]);
-        }
+        
+        
 
         const response = await search(word);
         if(response) {
@@ -24,10 +25,13 @@ const SearchBar = ({ onGetBooks }) => {
         }
       } catch (e) {
         console.log("error in search", e);
+      }finally{
+        
       }
     };
-
+    
     doIt();
+    
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [word]);
 

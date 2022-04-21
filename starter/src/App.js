@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 
 function App() {
+  //this state books is passed down to the children!
   const [books, setBooks] = useState([]);
   const [refreshBooks, setRefreshBooks] = useState(true)
 

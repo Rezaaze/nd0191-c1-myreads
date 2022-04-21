@@ -7,7 +7,7 @@ const BookForm = ({listBooks, listen, book,}) => {
   const [bookState, setBookState] = React.useState(() => {
     if (isInShelf) {
       const a = listBooks.filter(item=>item.id===book.id)
-      console.log(a)
+      
       return a[0].shelf;
     }
     if(book.shelf){
@@ -17,11 +17,11 @@ const BookForm = ({listBooks, listen, book,}) => {
     
     
   });
-  console.log(bookState)
+  
   const [bookStateChange, setBookStateChange] = React.useState(false);
 
   const bookStateHandler = (event) => {
-    console.log(event.target.value);
+    
     setBookState(event.target.value);
     setBookStateChange(true);
   };
